@@ -1,0 +1,74 @@
+.loginComponent{
+  width: 100vw;
+  height: 100vh;
+  background: url("../../../public/netflixcover.jpg.webp");
+
+   .top {
+    .wrapper {
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .logo {
+        height: 40px;
+        background-color: black;
+      }
+    }
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    form{
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        padding: 30px;
+        background-color: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-around;
+    }
+    input{
+        border-radius: 5px;
+        background-color: gray;
+        color: white;
+        padding: 7px;
+
+       &::placeholder{
+        color:lightgray;
+
+       } 
+    }
+    button{
+        height: 40px;
+        width: 140px;
+        border-radius: 5px;
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+    }
+    span{
+        color: rgb(205, 199, 199);
+        b{
+            color: white;
+            cursor: pointer;
+        }
+
+    }
+  }
+
+}
