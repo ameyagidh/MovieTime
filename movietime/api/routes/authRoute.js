@@ -4,7 +4,7 @@ const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
 // Registering a user
-Router.get("/register",async (req,res)=>{
+Router.post("/register",async (req,res)=>{
     const newUser = User({
         username:req.body.username,
         email:req.body.email,

@@ -1,14 +1,13 @@
 const Router = require("express").Router();
 const User = require("../models/UserM");
-const CryptoJS = require("crypto-js");
 const verify = require("../verifeToken");
 const jwt  = require("jsonwebtoken");
-const mongoose = require("mongoose");
+
 
 // UPDATE
 Router.put("/:id",verify,async(req,res)=>{
 
-    if(req.user.id == req.params.id || req.user.isAdmin){
+    if(req.user.id === req.params.id || req.user.isAdmin){
 
         if(req.body.password){
             req.body.password = jwt.CryptoJS.AES.encrypt(req.body.password,process.env.SECRET_KEY).toString();
@@ -84,8 +83,8 @@ Router.get("/",verify,async(req,res)=>{
 
 //GET USER STATS
 Router.get("/stats", async (req, res) => {
-    const today = new Date();
-    const latYear = today.setFullYear(today.setFullYear() - 1);
+    // const today = new Date();
+    // const latYear = today.setFullYear(today.setFullYear() - 1);
   
     try {
       const data = await User.aggregate([
