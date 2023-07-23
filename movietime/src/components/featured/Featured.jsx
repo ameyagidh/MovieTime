@@ -1,14 +1,33 @@
 import { InfoOutlined, PlayArrow } from '@material-ui/icons'
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import "./featured.scss"
+import axios from 'axios';
 
 const Featured = ({type}) => {
+
+  const[content,setContent] = useState({});
+  
+  useEffect(()=>{
+      const getRandomMovie = async()=>{
+          try{
+              const res = await axios.get(`/movies/random?type=${type}`,
+              {
+                headers: {
+                  token:
+                  "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDEzMjIyNywiZXhwIjoxNjkwNTY0MjI3fQ.N1tm1pjqGQOxiTvJJy7srnJJu9YdRt228Z2SHdCuoYw",
+                },
+              });
+            setContent(res.data[0]);
+          }catch(err){
+            console.log(err);
+          }
+      } ;
+      getRandomMovie();
+  },[type]);
   return (
     <div className='featured'>
       {type && (
         <div className="category">
-          {/* {type === "movie" &&( <span> Movies</span>)}
-         {type==="series" && (<span>Series</span>)} */}
          <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select name="genre" id ="genre">
             <option>Genre</option> 
@@ -30,16 +49,16 @@ const Featured = ({type}) => {
       )}
     <img
         // width="100%"
-        src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        // src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        src={content.img}
         alt='MovieTime'
         />
     <div className="info">
         <img
-          src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1"
-          alt=""
+          src={content.img}
+            alt=""
         />
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas cupiditate ea voluptate maiores debitis! Esse necessitatibus eligendi error quia sit doloremque reprehenderit, animi aspernatur? Maiores ad est reprehenderit ab minima.
-    <span className="desc">
+       {content.desc}  <span className="desc">
     </span>
     <div className="buttons">
         <button className="play">
