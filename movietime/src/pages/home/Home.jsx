@@ -1,10 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./home.scss"
 import Navbar from '../../components/Navbar/navbar'
 import Featured from '../../components/featured/Featured'
 import ListComponent from "../../components/list/ListComponent"
+import axios from "axios"
 
-const Home = () => {
+const Home = ({type}) => {
+
+  const [lists,setLists] =useState([]);
+  const [genre,setGenre] = useState(null);
+
+  // useEffect(()=>{
+
+  //   const getRandomLists = async()=>{
+  //     try{
+  //       const res =  await axios.get(
+  //                 `lists ${type ? "?type=" + type:"" } 
+  //                 && ${genre ? "&genre" + genre:""}`,
+  //                {
+                  // headers:{
+                  //   token:
+                  //     "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDEzMjIyNywiZXhwIjoxNjkwNTY0MjI3fQ.N1tm1pjqGQOxiTvJJy7srnJJu9YdRt228Z2SHdCuoYw"
+                  // }
+  //                }
+  //               );
+  //       console.log(res);
+  //     }catch(err){
+  //       console.log(err);
+  //     }
+  //   };
+  //   getRandomLists();
+  // },[type,genre]);
+
+
+  useEffect(() => {
+    const getRandomLists = async () => {
+      try {
+        const res = await axios.get(
+          `lists${type ? "?type=" + type : ""}${
+            genre ? "&genre=" + genre : ""
+          }`,
+          {
+            headers:{
+              token:
+                "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDEzMjIyNywiZXhwIjoxNjkwNTY0MjI3fQ.N1tm1pjqGQOxiTvJJy7srnJJu9YdRt228Z2SHdCuoYw"
+            }
+          }
+        );
+        // setLists(res.data);
+       console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomLists();
+  }, [type, genre]);
+
+
   return (
     <div className="home">
     <Navbar />
