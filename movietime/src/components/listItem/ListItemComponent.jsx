@@ -1,34 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../listItem/listItemComponent.scss"
 import { Add, PlayArrowOutlined, PlayArrowRounded, ThumbDownAltOutlined, ThumbUpAltOutlined } from '@material-ui/icons'
 
-const ListItemComponent = () => {
-  return (
-    <div className='listItem'> 
-      <img
-        src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
-        alt=""
-      />
-    <div className="itemInfo">
-      <div className="icons">
-        <PlayArrowOutlined />
-        <Add />
-        <ThumbUpAltOutlined />
-        <ThumbDownAltOutlined />
-      </div>
-      <div className="itemInfoTopic"></div>
-      <span >1 hr 30 mins</span>
-      <span className="limit"> +60</span>
-      <span> 1999</span>
-      </div>
-      <div className="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat eaque ex quis molestiae assumenda voluptates facere totam dicta, ad, nihil iusto debitis, soluta perspiciatis quia ipsam aut ullam cupiditate commodi.
-      </div>
-      <div className="genre">Action</div>
-  </div>
-    
-    )
+const ListItemComponent = ({index}) => {
 
+  const [isHovered,setIsHovered] = useState(false);
+  const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  return (
+    <div
+    className="listItem"
+    style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
+    onMouseEnter={() => setIsHovered(true)}
+    onMouseLeave={() => setIsHovered(false)}
+  >
+    <img src={"https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee"
+      } alt="" />
+    {isHovered && (
+      <>
+        <video src={trailer} autoPlay={true} loop />
+        <div className="itemInfo">
+          <div className="icons">
+            <PlayArrowOutlined className="icon" />
+            <Add className="icon" />
+            <ThumbUpAltOutlined className="icon" />
+            <ThumbDownAltOutlined className="icon" />
+          </div>
+          <div className="itemInfoTop">
+            <span>2hrs</span>
+            <span className="limit">+16</span>
+            <span>1999</span>
+          </div>
+          <div className="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nam non nemo maiores, aut dicta commodi ipsum, amet eveniet repellendus consequuntur tenetur nulla, exercitationem debitis atque nesciunt doloremque odit quas.</div>
+          <div className="genre">Comedy</div>
+        </div>
+      </>
+    )}
+  </div>
+    )
 }
 
 export default ListItemComponent
