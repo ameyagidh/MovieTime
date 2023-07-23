@@ -10,29 +10,6 @@ const Home = ({type}) => {
   const [lists,setLists] =useState([]);
   const [genre,setGenre] = useState(null);
 
-  // useEffect(()=>{
-
-  //   const getRandomLists = async()=>{
-  //     try{
-  //       const res =  await axios.get(
-  //                 `lists ${type ? "?type=" + type:"" } 
-  //                 && ${genre ? "&genre" + genre:""}`,
-  //                {
-                  // headers:{
-                  //   token:
-                  //     "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDEzMjIyNywiZXhwIjoxNjkwNTY0MjI3fQ.N1tm1pjqGQOxiTvJJy7srnJJu9YdRt228Z2SHdCuoYw"
-                  // }
-  //                }
-  //               );
-  //       console.log(res);
-  //     }catch(err){
-  //       console.log(err);
-  //     }
-  //   };
-  //   getRandomLists();
-  // },[type,genre]);
-
-
   useEffect(() => {
     const getRandomLists = async () => {
       try {
@@ -47,8 +24,8 @@ const Home = ({type}) => {
             }
           }
         );
-        // setLists(res.data);
-       console.log(res);
+        setLists(res.data);
+      //  console.log(res);
       } catch (err) {
         console.log(err);
       }
@@ -60,11 +37,15 @@ const Home = ({type}) => {
   return (
     <div className="home">
     <Navbar />
-    <Featured  type="movie"/>    
-    <ListComponent/>
-    <ListComponent/>
-    <ListComponent/>
-    <ListComponent/>
+    <Featured  type={type} setGenre={setGenre}/>   
+    {lists.map((ListComponent)=>{
+    <ListComponent ListComponent={ListComponent}/>
+    })
+    } 
+    {lists.map((list) => (
+        <ListComponent list={list} />
+    ))}
+
     </div>
   )
 }
