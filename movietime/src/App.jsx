@@ -4,8 +4,8 @@ import RegisterComponent from "./pages/register/RegisterComponent";
 import MyLoginComponent from "./pages/login/MyLoginComponent";
 
 const App = () => {
-  // return <Home/>;
-  return <RegisterComponent/>
+  return <Home/>;
+  // return <RegisterComponent/>
   // return <MyLoginComponent/>
 };
 

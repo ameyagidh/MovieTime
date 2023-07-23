@@ -4,56 +4,51 @@ import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@material-ui/icon
 import ListItemComponent from "../listItem/ListItemComponent"
 
 const ListComponent = () => {
+  const [isMoved, setIsMoved] = useState(false);
+  const [slideNumber, setSlideNumber] = useState(0);
 
-  const [slideNumber,setSlideNumber]  = useState(0);
-  const [isMoved,setIsMoved] = useState(false);
+  const listRef = useRef();
 
-  const listRef = useRef()
-  const handleClick = (direction)=>{
-    // setIsMoved(true);
-      // let distance = listRef.current.getBoundingClientRect().x - 50
-
-      if(direction==="left" && slideNumber > 0){
-        setSlideNumber(slideNumber - 1);
-        setIsMoved(true);
-          // listRef.current.style.transform = `translateX(${230 + distance}px)`
-          // listRef.current.style.transform = `translateX(${230}px)`
-     }
-      else if(direction==="right" && slideNumber < 5){
-        setSlideNumber(slideNumber + 1);
-        setIsMoved(true);
-          // listRef.current.style.transform = `translateX(${-230 + distance}px)`
-      }
-      // console.log(distance);
-  }
-
+  const handleClick = (direction) => {
+    setIsMoved(true);
+    let distance = listRef.current.getBoundingClientRect().x - 50;
+    if (direction === "left" && slideNumber > 0) {
+      setSlideNumber(slideNumber - 1);
+      listRef.current.style.transform = `translateX(${230 + distance}px)`;
+    }
+    if (direction === "right" && slideNumber < 5) {
+      setSlideNumber(slideNumber + 1);
+      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+    }
+  };
   return (
-    <div className='list'>
-   <span className="listTitle">
-    Continue to watch
-   </span>
-    <div className="wrapper">
-      <ArrowBackIosOutlined className='sliderArrow left' 
-      onClick={handleClick("left")}
-      // style={{display:!isMoved&&"none"}}
-      />
-      
-      <div className="container" ref={listRef}>
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
-        <ListItemComponent />
+    <div className="list">
+      <span className="listTitle">Continue to watch</span>
+      <div className="wrapper">
+        <ArrowBackIosOutlined
+          className="sliderArrow left"
+          onClick={() => handleClick("left")}
+          style={{ display: !isMoved && "none" }}
+        />
+        <div className="container" ref={listRef}>
+          <ListItemComponent index={0} />
+          <ListItemComponent index={1} />
+          <ListItemComponent index={2} />
+          <ListItemComponent index={3} />
+          <ListItemComponent  index={4} />
+          <ListItemComponent  index={5} />
+          <ListItemComponent index={6} />
+          <ListItemComponent index={7} />
+          <ListItemComponent index={8} />
+          <ListItemComponent  index={9} />
+        </div>
+        <ArrowForwardIosOutlined
+          className="sliderArrow right"
+          onClick={() => handleClick("right")}
+        />
       </div>
-      <ArrowForwardIosOutlined className='sliderArrow right' onClick={handleClick("left")}/>
     </div>
-    </div>
-    );
+  );
 }
 
 export default ListComponent
