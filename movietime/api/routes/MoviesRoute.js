@@ -88,6 +88,23 @@ Router.get("/random", verify, async (req, res) => {
     }
   });
 
+  //Get all
+Router.get("/all", verify, async (req, res) => {
+    const query_ = req.query.new;
+    if(req.user.isAdmin){
+        try {
+          const AllMovies = query_ ? await Movie.find().sort({_id:-1}).limit(5) :await Movie.find().sort({_id:-1});
+          res.status(200).json(AllMovies);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+    }   
+    else{
+        res.status(500).json("You are not authenticated");
+    }
+
+  });
+
 
 
 module.exports = Router;

@@ -1,12 +1,13 @@
 const mongoose = require("mongoose")
 
-const ListModelM = mongoose.UseSchema(
-{
-    title:{type:String,required:true,unique:true},
-    type:{type:String},
-    content:{type:String},
-    genre:{type:Array},
-},{timestamps:true}
-)
+const ListModel = new mongoose.Schema(
+  {
+    title: { type: String, required: true, unique: true },
+    type: { type: String },
+    genre: { type: String },
+    content:{type:Array}
+  },
+  { timestamps: true }
+);
 
-module.exports = mongoose.Schema("ListModel",ListModelM); 
+module.exports = mongoose.model("List", ListModel);

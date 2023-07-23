@@ -45,8 +45,6 @@ Router.delete("/:id",verify,async(req,res)=>{
     }else{
         res.status(500).json("You are not authorized to delete this user");
     }
-
-
 });
 
 
