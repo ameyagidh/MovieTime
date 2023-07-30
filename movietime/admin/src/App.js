@@ -9,17 +9,25 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
+import MyLoginComponent from "./pages/login/MyLoginComponent";
+import { AuthContext } from "./context/authContext/AuthContext";
+import { useContext } from "react";
 
 function App() {
+  const user = useContext(AuthContext );
   return (
     <Router>
-      <Topbar />
+      <Switch>
+      <Route path="/login">
+        {user ? <Home/> : <MyLoginComponent/>}
+          </Route>
+          {user && <>
+            <Topbar />
       <div className="container">
         <Sidebar />
-        <Switch>
           <Route exact path="/">
             <Home />
-          </Route>
+          </Route> 
           <Route path="/users">
             <UserList />
           </Route>
@@ -38,8 +46,9 @@ function App() {
           <Route path="/newproduct">
             <NewProduct />
           </Route>
-        </Switch>
       </div>
+          </>} 
+      </Switch>
     </Router>
   );
 }
