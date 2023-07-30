@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { useContext,useEffect } from "react";
-import { getMovies } from "../../context/movieContext/apiCalls"; 
+import { deleteMovies, getMovies } from "../../context/movieContext/apiCalls"; 
 import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function ProductList() {
@@ -20,7 +20,7 @@ export default function ProductList() {
 
  
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id)); 
+    deleteMovies(id,dispatch );
   };
 
   const columns = [
@@ -57,7 +57,7 @@ export default function ProductList() {
             </Link>
             <DeleteOutline
               className="productListDelete"
-              onClick={() => handleDelete(params.row._id)}
+              onClick={() => handleDelete(params.row ._id)}
             />
           </>
         );
