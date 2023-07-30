@@ -22,7 +22,7 @@ Router.post("/", verify, async (req, res) => {
 Router.put("/:id",verify,async(req,res)=>{
     if(req.user.isAdmin){
         try{
-            const updatedMovie = await await Movie.findByIdAndUpdate(
+            const updatedMovie = await Movie.findByIdAndUpdate(
                 req.params.id,
                 {$set:req.body},
                 {new:true}
@@ -76,13 +76,14 @@ Router.get("/random", verify, async (req, res) => {
           { $match: { isSeries: true } },
           { $sample: { size: 1 } },
         ]);
+        res.status(200).json(movie);
       } else {
         movie = await Movie.aggregate([
           { $match: { isSeries: false } },
           { $sample: { size: 1 } },
-        ]);
+          ]);
+          res.status(200).json(movie);
       }
-      res.status(200).json(movie);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -102,9 +103,6 @@ Router.get("/all", verify, async (req, res) => {
     else{
         res.status(500).json("You are not authenticated");
     }
-
   });
-
-
 
 module.exports = Router;
