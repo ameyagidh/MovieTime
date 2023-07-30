@@ -18,7 +18,7 @@ const ListItemComponent = ({index,item}) => {
         const res = await axios.get("/movies/find/" + item, {
           headers: {
             token:
-            "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDEzMjIyNywiZXhwIjoxNjkwNTY0MjI3fQ.N1tm1pjqGQOxiTvJJy7srnJJu9YdRt228Z2SHdCuoYw",
+            "Ameya eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDY5Mzc1NiwiZXhwIjoxNjkxMTI1NzU2fQ.QV5q8C2M_4099ESG9lafLk-ygeyycY-W_RSjjIgdGOc",
           },
         });
         setMovie(res.data);
