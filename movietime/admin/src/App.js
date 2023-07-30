@@ -46,7 +46,7 @@ function App() {
           <Route path="/newproduct">
             <NewProduct />
           </Route>
-      </div>
+      </div> 
           </>} 
       </Switch>
     </Router>
