@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# MOVIE TIME
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Movie Time is a MERN Stack website which uses MongoDB, Express Js, React, Node js to build a full stack website. 
+The website is a place where the backend movie data is stored  in MonogoDB atlas cluster, retrieved and displayed on the react website. I have used Html, CSS, Bootstrap, React for the frontend development and design of the website.
+For the backend I have used Node js, Express js and MonogDB Atlas Cluster. 
+The website is hosted and deployed on Heroku.
 
-## Available Scripts
+## Applicaiton url 
 
-In the project directory, you can run:
+https://movietime-frontend-ameyasgidh.herokuapp.com/
 
-### `npm start`
+- Git Clone https://github.com/ameyagidh/Movie-Time.git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
+to access the backend repo.
+- run command 
+```cd AmeyaSantoshGidh-backend```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+to access the frontend repo.
+- run command 
+```cd AmeyaSantoshGidh-frontend/movieapp``` 
 
-### `npm test`
+- install node modules by running
+```cd npm install``` in both the repo.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+First run the backend then the front end so that the movies are fetched before displaying them.
+- To run backend use the command 
+```node index.js```
+- To run frontend use the command 
+```npm run start```
 
-### `npm run build`
+## Requirements
+1) Node version 17.6 or higher.
+2) Integrated development environment such as Visual Studio code (preferred)
+3) React version 16 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Links
+- Github repo - https://github.com/ameyagidh/Movie-Time/tree/main/MERN%20STACK
+- Github Frontend repo- https://github.com/ameyagidh/Movie-Time/tree/main/MERN%20STACK/AmeyaSantoshGidh-frontend/movieapp
+- Github Backend repo - https://github.com/ameyagidh/Movie-Time/tree/main/MERN%20STACK/AmeyaSantoshGidh-backend
+- Frontend Heroku - https://jiggle-frontend.herokuapp.com/
+- Backend Heroku - https://movietime-backend-ameyasgidh.herokuapp.com/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## App Functionalities
+- Sign in/out functionality using google api has been implemented
+- When user is not logged in--> User can see the Movies as well as the reviews.
+- when we click on a movie add review url calls the add review and the user if not logged in cannot add the reviews but can view them. 
+- User logged in--> In addition to songs and add review, user can see a Favourites landing page as well. The user is given extra functionality of updating the reviews, adding them and deleting a review.
+- Landing Page(Movies): All the Movies from the webpage. 
+- Landing Page(Reviews): The movie reviews can be viewed, added, deleted or updated by the user. 
+- Landing Page (Favourites): Movies that have been added by user as favorites.
+- There is a filter function and a search function which allows user to access the required movies by name, All ratings, Approved, Passed, Open, Unrated.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
+![MovieTimeGif](https://user-images.githubusercontent.com/65457905/190870065-ae027181-d8de-4e14-9a4b-d03118f2c005.gif)
 
-### `npm run eject`
+### Landing Page
+![LandingHomePage](https://user-images.githubusercontent.com/65457905/190870108-12f1f9e3-31c3-4510-abb8-ad5f24fb4a1f.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Search By Name 
+![SearchByName](https://user-images.githubusercontent.com/65457905/190870113-55326a10-526a-466d-a064-3657c993fb01.PNG)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Filtered by a category called Approved
+![FilteredBy_Approved](https://user-images.githubusercontent.com/65457905/190870116-e99b08a0-ae7c-410c-b59e-d77f7f920bfc.PNG)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Login Favourites DND Card
+![LoginFav](https://user-images.githubusercontent.com/65457905/190870110-0a98e2a9-88f3-4473-8bdd-4e1dd19085ba.PNG)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Favourites page
+![Favorites](https://user-images.githubusercontent.com/65457905/190870115-9f1dc385-d6de-42b7-af1d-4da2051f5e95.PNG)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
