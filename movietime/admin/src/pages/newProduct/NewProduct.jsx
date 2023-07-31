@@ -19,10 +19,25 @@ export default function NewProduct() {
 
   const upload = (items) => {
     items.forEach((item) => {
-    
-    
-    });
-  }
+      const uploadTask = storage.ref(`/items/${item.file.name}`).put(item);
+      uploadTask.on("state_changes",snapshot=>{
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100; 
+        console.log('Upload is ' + progress + '% done');
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        uploadTask.snapshot.ref.getDownloadURL().then((url) => {
+          setMovie((prev) => {
+            return { ...prev, [item.label]: url };
+          });
+          setUploaded((prev) => prev + 1);
+        });
+      }
+    );
+  });
+};
   const handleUpload=(e)=>{
       e.preventDefault();
       upload([
