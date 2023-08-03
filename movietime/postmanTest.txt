@@ -1,0 +1,38 @@
+localhost:8800/api/auth/register => POST
+
+{
+"username":"ameya",
+"email":"ameyagb2@gmail.com",
+"password":"1234"
+
+}
+
+localhost:8800/api/auth/login => POST
+
+also give headers as token key and
+value as authenticateMe 1234gyeibekeojdni
+
+
+To test put request first login from the token , then
+update
+
+put=>
+first login for that user using the post request
+then create another put request
+localhost:8800/api/users/64b435f6e5da485757b190b2
+change headers with the jwt token
+token => value u get after login
+and then in body update the user.
+
+
+also for token in headers it should be like this
+
+Ameya then the  token(eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YjQzNWY2ZTVkYTQ4NTc1N2IxOTBiMiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MDY5Mzc1NiwiZXhwIjoxNjkxMTI1NzU2fQ.QV5q8C2M_4099ESG9lafLk-ygeyycY-W_RSjjIgdGOc)
+localhost:8800:/api/users/stats
+
+
+
+
+
+
+
