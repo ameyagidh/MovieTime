@@ -23,7 +23,7 @@ export default function RegisterComponent()  {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try{
-      await axios.post("/auth/register",{email,username,password});
+      await axios.post("/auth/register",{email,username, password});
       history.push("/login");
     }catch{
       
