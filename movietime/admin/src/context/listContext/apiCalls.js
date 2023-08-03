@@ -16,7 +16,7 @@ export const getLists = async (dispatch) => {
   try {
     const res = await axios.get("/lists", {
       headers: {
-        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        token: "Ameya  " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
     dispatch(getListsSuccess(res.data));
@@ -46,7 +46,7 @@ export const deleteList = async (id, dispatch) => {
   try {
     await axios.delete("/lists/" + id, {
       headers: {
-        token: "Ameya " + JSON.parse(localStorage.getItem("user")).accessToken,
+        token: "Ameya  " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
     dispatch(deleteListSuccess(id));
