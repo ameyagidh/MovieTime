@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getmovieFailure, getmovieStart, getmovieSuccess, deletemovieFailure,deletemovieSuccess,deletemovieStart } from "./movieAction";
+import { getmovieFailure, getmovieStart, getmovieSuccess, deletemovieFailure,deletemovieSuccess,deletemovieStart, createMovieSuccess, createMovieFailure } from "./movieAction";
 
 export const getMovies = async(dispatch)=>{
     dispatch(getmovieStart);
@@ -11,10 +11,26 @@ export const getMovies = async(dispatch)=>{
           });
         dispatch(getmovieSuccess(res.data));
      }catch(err){
-        dispatch(getmovieFailure)
+        dispatch(getmovieFailure())
      }
 
 }
+
+export const createMovies = async(movie,dispatch)=>{
+  dispatch(deletemovieStart()); 
+   try{
+      const res =  axios.post("/movies/", movie,{
+          headers: {
+            token: "Ameya " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        });
+      dispatch(createMovieSuccess(res.data ));
+   }catch(err){
+      dispatch(createMovieFailure())
+   }
+
+}
+
 
 export const deleteMovies = async(id,dispatch)=>{
   dispatch(deletemovieStart()); 
@@ -26,7 +42,7 @@ export const deleteMovies = async(id,dispatch)=>{
         });
       dispatch(deletemovieSuccess(id));
    }catch(err){
-      dispatch(deletemovieFailure )
+      dispatch(deletemovieFailure())
    }
 
 }

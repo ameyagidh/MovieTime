@@ -42,6 +42,46 @@ const movieReducer =(state,action)=>{
                     error:true,
                 }; 
 
+            case "CREATE_MOVIE_START":
+                return{
+                    ...state,
+                    isFetching:true,
+                    error:false,
+                };
+
+            case "CREATE_MOVIE_SUCCESS":
+                return{
+                    movie:[...state,action.payload],
+                    isFetching:false,
+                    error:false,
+                };
+            case "CREATE_ MOVIE_FAILURE":
+                return{
+                    ...state,
+                    isFetching:false,
+                    error:true,
+                };     
+
+            case "UPDATE_MOVIE_START":
+                return{
+                    ...state,
+                    isFetching:true,
+                    error:false,
+                };
+                
+            case "UPDATE_MOVIE_SUCCESS":
+                return{
+                    movies :state.movies.map((movie)=>movie._id === action.payload && action.payload),
+                    isFetching:false,
+                    error:false,
+                };
+                
+            case "UPDATE_ MOVIE_FAILURE":
+                return{
+                    ...state,
+                    isFetching:false,
+                    error:true,
+                };     
 
         default:
             return {...state};
