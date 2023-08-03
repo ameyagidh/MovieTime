@@ -3,19 +3,22 @@ import Home from "./pages/home/Home";
 import RegisterComponent from "./pages/register/RegisterComponent";
 import MyLoginComponent from "./pages/login/MyLoginComponent";
 import MyWatchPage from "./pages/watch/MyWatchPage";
+import AuthContext from "./authContext/AuthContext"
 
 import {
   BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
+import { useContext } from "react";
 
 const App = () => {
   // return <Home/>; 
   // return <RegisterComponent/>
   // return <MyLoginComponent/>
-
-  const user = true;
+  const {user}= useContext(AuthContext); 
+  // const user = true;
+   
   // const user = false;
 
   return(
@@ -28,7 +31,7 @@ const App = () => {
         />
       <Route  
       path="/movies"
-      element={user ? <Home type="movies"/> : <MyLoginComponent/>}
+      element={user ? <Home type="movie"/> : <MyLoginComponent/>}
        />
       <Route  
       path="/series" 
